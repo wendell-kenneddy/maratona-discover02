@@ -1,5 +1,8 @@
 const express = require('express');
 const routes = express.Router();
+const ProfileController = require('./controllers/ProfileController');
+const DashboardController = require('./controllers/DashboardController');
+const JobController = require('./controllers/JobController');
 
 class Profile {
   static data = {
