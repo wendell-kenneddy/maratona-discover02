@@ -12,7 +12,13 @@
 <p align="center">
  <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&color=49AA26&labelColor=000000" alt="PRs welcome!" />
 
-  <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000">
+  <img alt="License"
+  src="https://img.shields.io/static/v1?label=license&message=MIT&color=49AA26&labelColor=000000"
+  />
+  
+  <img alt="Author"
+  src="https://img.shields.io/static/v1?label=author&message=Wendell%20Kenneddy&color=49AA26&labelColor=000000"
+  />
 </p>
 
 <br>
@@ -31,7 +37,6 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 - NodeJS
 - EJS
 - Express
-- SQLite
 
 ## 💻 Projeto
 
@@ -47,4 +52,6 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](.github/LICENSE.
 
 ---
 
-Feito com ♥ by Rocketseat :wave: [Participe da nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
+Este projeto é uma implementação do projeto criado durante a Maratona Discover
+02, da Rocketseat. :wave: [Participe da nossa
+comunidade da Rocketseat!](https://discordapp.com/invite/gCRAFhc)
