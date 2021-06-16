@@ -11,9 +11,13 @@ const profile = {
   __createdAt: Date.now()
 }
 
-routes.get('/', (req, res) => res.render('index'));
-routes.get('/job', (req, res) => res.render('job'));
-routes.get('/job/edit', (req, res) => res.render('job-edit'));
-routes.get('/profile', (req, res) => res.render('profile', { profile }));
+routes.get('/', Jobs.controllers.getIndexRoute);
+routes.get('/job', Jobs.controllers.getJobRoute);
+routes.post('/job', Jobs.controllers.postJobRoute);
+routes.get('/job/:id', Jobs.controllers.getJobEditRoute);
+routes.post('/job/:id', Jobs.controllers.postJobEditRoute);
+routes.post('/job/delete/:id', Jobs.controllers.postJobDeleteRoute);
+routes.get('/profile', Profile.controllers.getProfileRoute);
+routes.post('/profile', Profile.controllers.postProfileRoute);
 
 module.exports = routes;
