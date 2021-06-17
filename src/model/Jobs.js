@@ -33,8 +33,12 @@ module.exports = {
     await db.close();
   },
 
-  editJob(job, index) {
-    jobs[index] = job;
+  async deleteJob(id) {
+    const db = await Database();
+
+    await db.run(`DELETE FROM jobs WHERE id = ${id}`);
+
+    await db.close();
   },
 
   deleteJob(job, index) {
