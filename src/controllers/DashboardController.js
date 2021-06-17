@@ -2,9 +2,10 @@ const Profile = require('../model/Profile');
 const JobUtils = require('../utils/JobUtils');
 
 module.exports = {
-  getDashboardRoute(req, res) {
-    const updatedJobs = JobUtils.getUpdatedJobs();
-    let freeHours = Profile.getData()['hours-per-day'];
+  async getDashboardRoute(req, res) {
+    const updatedJobs = await JobUtils.getUpdatedJobs();
+    const profile = await Profile.getData();
+    let freeHours = 0;
     let statusCount = {
       total: updatedJobs.length,
       progress: 0,
@@ -18,7 +19,7 @@ module.exports = {
     }
 
     res.render('index', {
-      profile: Profile.getData(),
+      profile: profile,
       updatedJobs,
       statusCount,
       freeHours
