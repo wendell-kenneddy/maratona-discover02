@@ -19,14 +19,16 @@ module.exports = {
     return normalizedJobs;
   },
 
-  {
-    id: 2,
-    name: 'OneTwo Project',
-    'daily-hours': 3,
-    'total-hours': 17,
-    createdAt: Date.now()
-  }
-];
+  async editJob(job, id) {
+    const db = await Database();
+
+    await db.run(
+      `UPDATE jobs SET
+      name = "${job.name}",
+      daily_hours = ${job['daily-hours']},
+      total_hours = ${job['total-hours']}
+      WHERE id = ${id}`
+    )
 
 module.exports = {
   getJobs() {
