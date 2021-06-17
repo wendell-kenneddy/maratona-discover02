@@ -2,8 +2,8 @@ const Profile = require('../model/Profile');
 const ProfileUtils = require('../utils/ProfileUtils');
 
 module.exports = {
-  getProfileRoute(req, res) {
-    return res.render('profile', { profile: Profile.getData() })
+  async getProfileRoute(req, res) {
+    return res.render('profile', { profile: await Profile.getData() })
   },
 
   postProfileRoute(req, res) {
