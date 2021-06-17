@@ -7,9 +7,9 @@ module.exports = {
     return res.render('job');
   },
 
-  postJobRoute(req, res) {
+  async postJobRoute(req, res) {
     const job = createJob(req.body);
-    Jobs.addJob(job);
+    await Jobs.addJob(job);
     return res.redirect('/');
   },
 
