@@ -1,10 +1,22 @@
-let jobs = [
-  {
-    id: 1,
-    name: 'Pizzaria Guloso',
-    'daily-hours': 2,
-    'total-hours': 60,
-    createdAt: Date.now()
+const Database = require('../db/config');
+
+module.exports = {
+  async getJobs() {
+    const db = await Database();
+    const jobs = await db.all('SELECT * FROM jobs');
+    const normalizedJobs = jobs.map(job => {
+      return {
+        id: job.id,
+        name: job.name,
+        'daily-hours': job.daily_hours,
+        'total-hours': job.total_hours,
+        createdAt: job.created_at
+      };
+    })
+
+    await db.close();
+
+    return normalizedJobs;
   },
 
   {
