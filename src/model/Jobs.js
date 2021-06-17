@@ -30,9 +30,7 @@ module.exports = {
       WHERE id = ${id}`
     )
 
-module.exports = {
-  getJobs() {
-    return jobs;
+    await db.close();
   },
 
   editJob(job, index) {
