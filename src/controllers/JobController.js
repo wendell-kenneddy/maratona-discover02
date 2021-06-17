@@ -1,6 +1,6 @@
 const Jobs = require("../model/Jobs");
-const JobUtils = require("../utils/JobUtils");
-const { createJob, calculateJobBudget } = require("../utils/JobUtils");
+const { createJob } = require("../utils/JobUtils");
+const Profile = require('../model/Profile');
 
 module.exports = {
   getJobRoute(req, res) {
