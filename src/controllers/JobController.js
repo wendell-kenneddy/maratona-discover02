@@ -32,7 +32,6 @@ module.exports = {
 
     if (!job) return res.send('Error: Job not found');
 
-    const jobIndex = Jobs.getJobs().indexOf(job);
     const updatedJob = {
       ...job,
       name: req.body.name || 'Nome não especificado',
