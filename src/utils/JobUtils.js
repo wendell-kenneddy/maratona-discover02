@@ -26,27 +26,25 @@ module.exports = {
     return passedDays;
   },
 
-  calculateJobBudget(job) {
-    return job['total-hours'] * Profile.getData()['hour-value'];
-  },
+  async getUpdatedJobs() {
+    const jobs = await Jobs.getJobs();
+    const profile = await Profile.getData();
 
-  getUpdatedJobs() {
-    return Jobs.getJobs().map(job => {
+    return jobs.map(job => {
+      const budget = job['total-hours'] * profile['hour-value'];
       const remainingDays = this.getJobRemainingDays(job);
 
       return {
         ...job,
         remainingDays,
         status: remainingDays <= 0 ? 'done' : 'progress',
-        budget: this.calculateJobBudget(job)
+        budget
       };
     });
   },
 
   createJob(data) {
-    const lastJobId = Jobs.getJobs()[Jobs.getJobs().length - 1]?.id || 0;
     const job = {
-      id: lastJobId + 1,
       name: data.name,
       'daily-hours': data['daily-hours'],
       'total-hours': data['total-hours'],
