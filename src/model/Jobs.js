@@ -41,13 +41,23 @@ module.exports = {
     await db.close();
   },
 
-  deleteJob(job, index) {
-    if (index === -1) return;
+  async addJob(job) {
+    const db = await Database();
 
-    jobs.splice(index, 1);
-  },
+    await db.run(
+      `INSERT INTO jobs (
+        name,
+        daily_hours,
+        total_hours,
+        created_at
+      ) VALUES (
+        "${job.name}",
+        ${job['daily-hours']},
+        ${job['total-hours']},
+        ${job.createdAt}
+      );`
+    );
 
-  addJob(job) {
-    jobs.push(job);
+    await db.close();
   },
 }
