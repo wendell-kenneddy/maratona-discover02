@@ -44,9 +44,9 @@ module.exports = {
     return res.redirect('/job/' + jobId);
   },
 
-  postJobDeleteRoute(req, res) {
+  async postJobDeleteRoute(req, res) {
     const jobId = req.params.id;
-    Jobs.deleteJob(JobUtils.getJobIndexById(jobId));
+    await Jobs.deleteJob(jobId);
     return res.redirect('/');
   }
 }
