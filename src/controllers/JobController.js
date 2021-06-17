@@ -25,9 +25,10 @@ module.exports = {
     return res.render('job-edit', { job });
   },
 
-  postJobEditRoute(req, res) {
+  async postJobEditRoute(req, res) {
     const jobId = req.params.id;
-    const job = Jobs.getJobs().find(job => job.id === Number(jobId));
+    const jobs = await Jobs.getJobs();
+    const job = jobs.find(job => job.id === Number(jobId));
 
     if (!job) return res.send('Error: Job not found');
 
@@ -39,7 +40,7 @@ module.exports = {
       'daily-hours': req.body['daily-hours'] || 0,
     };
 
-    Jobs.editJob(updatedJob, jobIndex);
+    await Jobs.editJob(updatedJob, jobId);
     return res.redirect('/job/' + jobId);
   },
 
