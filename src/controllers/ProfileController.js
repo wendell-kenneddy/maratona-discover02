@@ -6,10 +6,12 @@ module.exports = {
     return res.render('profile', { profile: await Profile.getData() })
   },
 
-  postProfileRoute(req, res) {
-    Profile.update({
+  async postProfileRoute(req, res) {
+    const profile = await Profile.getData();
+
+    await Profile.update({
       // Fallbacks to the original data if some is missing.
-      ...Profile.getData(),
+      ...profile,
       ...req.body,
       'hour-value': ProfileUtils.calculateHourValue(req.body)
     });
