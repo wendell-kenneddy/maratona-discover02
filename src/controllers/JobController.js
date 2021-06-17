@@ -13,13 +13,15 @@ module.exports = {
     return res.redirect('/');
   },
 
-  getJobEditRoute(req, res) {
+  async getJobEditRoute(req, res) {
+    const jobs = await Jobs.getJobs();
+    const profile = await Profile.getData();
     const jobId = req.params.id;
-    const job = Jobs.getJobs().find(job => job.id === Number(jobId));
+    const job = jobs.find(job => job.id === Number(jobId));
 
     if (!job) return res.send('Error: Job not found');
 
-    job.budget = calculateJobBudget(job);
+    job.budget = job['total-hours'] * profile['hour-value'];
     return res.render('job-edit', { job });
   },
 
