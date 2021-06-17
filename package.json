@@ -4,7 +4,8 @@
   "description": "Freelance jobs calculator.",
   "main": "src/server.js",
   "scripts": {
-    "start": "nodemon ."
+    "start": "nodemon .",
+    "db": "node src/db/init.js"
   },
   "keywords": [],
   "author": "Wendell Kenneddy",
